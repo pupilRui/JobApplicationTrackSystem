@@ -1,0 +1,26 @@
+/* JobItem.css */
+.job-item {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.job-item h3 {
+    margin-top: 0;
+}
+
+.job-item a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.job-item button {
+    margin-right: 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Additional styling as needed */
