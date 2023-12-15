@@ -95,7 +95,7 @@ router.get('/saved', isAuthenticated, async (req, res) => {
         const userAppliedJobs = await Job.find({ user: req.user.id, status: 'applied' }).select('link');
 
         const savedLinks = new Set(userSavedJobs.map(job => job.link));
-        const filteredOpenJobs = openJobs.filter(job => !savedLinks.has(job.link));
+        const filteredOpenJobs = openJobs.filter(job => savedLinks.has(job.link));
         const appliedLinks = new Set(userAppliedJobs.map(job => job.link));
 
         // Add 'saved' and 'applied' flags to each job
@@ -123,7 +123,7 @@ router.get('/applied', isAuthenticated, async (req, res) => {
 
         const savedLinks = new Set(userSavedJobs.map(job => job.link));
         const appliedLinks = new Set(userAppliedJobs.map(job => job.link));
-        const filteredOpenJobs = openJobs.filter(job => !appliedLinks.has(job.link));
+        const filteredOpenJobs = openJobs.filter(job => appliedLinks.has(job.link));
 
         const jobsWithFlags = filteredOpenJobs.map(job => {
             return {
